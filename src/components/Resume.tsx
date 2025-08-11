@@ -25,8 +25,7 @@ const Resume = () => {
         <div>
           <h3 className="text-lg font-semibold text-blue-600 mb-3">Experience</h3>
           <ul className="list-disc list-inside text-sm sm:text-base leading-relaxed">
-            <li>OJT at Globe Davao – Web Mapping System</li>
-            <li>OJT/Immersion System – Vue, Laravel</li>
+            <li>OJT at CICTMO – OJT/Immersion System</li>
           </ul>
         </div>
 
