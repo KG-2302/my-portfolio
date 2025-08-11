@@ -1,23 +1,54 @@
+import {
+  FaReact,
+  FaHtml5,
+  FaCss3Alt,
+  FaLaravel,
+  FaNodeJs,
+  FaJava,
+  FaPython,
+  FaGitAlt,
+} from "react-icons/fa";
+import {
+  SiQuasar,
+  SiTypescript,
+  SiJavascript,
+  SiTailwindcss,
+  SiDotnet,
+  SiFirebase,
+  SiMysql,
+  SiKotlin,
+  SiFlutter,
+} from "react-icons/si";
+import { MdOutlineExtension } from "react-icons/md";
+import { TbBrandVscode } from "react-icons/tb";
+
 const skills = {
   Frontend: [
-    "React",
-    "Vue.js (Quasar Framework)",
-    "TypeScript",
-    "JavaScript",
-    "HTML",
-    "CSS",
-    "Tailwind CSS",
+    { name: "React", icon: FaReact },
+    { name: "Vue.js (Quasar Framework)", icon: SiQuasar },
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "JavaScript", icon: SiJavascript },
+    { name: "HTML", icon: FaHtml5 },
+    { name: "CSS", icon: FaCss3Alt },
+    { name: "Tailwind CSS", icon: SiTailwindcss },
   ],
-  Backend: ["Laravel (PHP)", "ASP.NET Core", "Node.js"],
-  Databases: ["Firebase", "MySQL"],
+  Backend: [
+    { name: "Laravel (PHP)", icon: FaLaravel },
+    { name: "ASP.NET Core", icon: SiDotnet },
+    { name: "Node.js", icon: FaNodeJs },
+  ],
+  Databases: [
+    { name: "Firebase", icon: SiFirebase },
+    { name: "MySQL", icon: SiMysql },
+  ],
   "Other Tools": [
-    "Git & GitHub",
-    "Java",
-    "Python",
-    "VB.Net",
-    "Kotlin",
-    "Flutter",
-    "Pinia",
+    { name: "Git & GitHub", icon: FaGitAlt },
+    { name: "Java", icon: FaJava },
+    { name: "Python", icon: FaPython },
+    { name: "VB.Net", icon: TbBrandVscode },
+    { name: "Kotlin", icon: SiKotlin },
+    { name: "Flutter", icon: SiFlutter },
+    { name: "Pinia", icon: MdOutlineExtension },
   ],
 };
 
@@ -37,14 +68,15 @@ const Skills = () => {
             <h3 className="text-2xl font-semibold text-gray-700 mb-6">
               {category}
             </h3>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-              {items.map((skill, i) => (
-                <span
+            <div className="flex flex-wrap justify-center gap-10">
+              {items.map(({ name, icon: Icon }, i) => (
+                <div
                   key={i}
-                  className="bg-blue-100 text-blue-900 px-4 py-2 sm:px-5 sm:py-3 rounded-md shadow hover:bg-blue-200 hover:animate-bounce hover:[animation-delay:_100ms] transition text-sm sm:text-base font-medium"
+                  className="flex flex-col items-center text-blue-700 transition-transform hover:-translate-y-1"
                 >
-                  {skill}
-                </span>
+                  <Icon className="text-5xl mb-2 hover:animate-bounce" />
+                  <span className="text-sm sm:text-base font-medium">{name}</span>
+                </div>
               ))}
             </div>
           </div>
@@ -53,6 +85,5 @@ const Skills = () => {
     </section>
   );
 };
-
 
 export default Skills;

@@ -34,8 +34,8 @@ const Resume = () => {
           <h3 className="text-lg font-semibold text-blue-600 mb-3">Education</h3>
           <p className="text-sm sm:text-base leading-relaxed">
             Bachelor’s in Information Technology<br />
-            Graduated 2025<br />
-            [Your School Name]
+            2021 - 2025<br />
+            University of Mindanao Tagum City
           </p>
         </div>
       </div>
