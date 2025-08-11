@@ -7,26 +7,25 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-const checkActiveSection = () => {
-  const scrollY = window.scrollY;
-  const windowHeight = window.innerHeight;
+  const checkActiveSection = () => {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
 
-  for (let i = sections.length - 1; i >= 0; i--) {
-    const section = sections[i];
-    const element = document.getElementById(section);
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = sections[i];
+      const element = document.getElementById(section);
 
-    if (element) {
-      const offsetTop = element.offsetTop;
+      if (element) {
+        const offsetTop = element.offsetTop;
 
-      // Highlight when section top is within half the viewport
-      if (scrollY + windowHeight / 2 >= offsetTop) {
-        setActiveSection(section);
-        break;
+        // Highlight when section top is within half the viewport
+        if (scrollY + windowHeight / 2 >= offsetTop) {
+          setActiveSection(section);
+          break;
+        }
       }
     }
-  }
-};
-
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,13 +36,16 @@ const checkActiveSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
- const handleNavClick = () => {
-  setIsMenuOpen(false);
-  setTimeout(() => {
-    checkActiveSection();
-  }, 50);
-};
-
+  const handleNavClick = (section: string) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setTimeout(() => {
+      checkActiveSection();
+    }, 50);
+  };
 
   return (
     <nav className="bg-white shadow px-6 py-4 fixed top-0 left-0 w-full z-50">
@@ -54,15 +56,14 @@ const checkActiveSection = () => {
         <ul className="hidden md:flex gap-4 text-sm font-medium text-gray-700">
           {sections.map((sec) => (
             <li key={sec}>
-              <a
-                href={`#${sec}`}
-                onClick={handleNavClick}
+              <button
+                onClick={() => handleNavClick(sec)}
                 className={`hover:text-blue-500 transition ${
                   activeSection === sec ? "text-blue-600 font-semibold" : ""
                 }`}
               >
                 {sec.charAt(0).toUpperCase() + sec.slice(1)}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
@@ -83,15 +84,14 @@ const checkActiveSection = () => {
         <ul className="flex flex-col gap-4 mt-4 text-sm font-medium text-gray-700 md:hidden">
           {sections.map((sec) => (
             <li key={sec}>
-              <a
-                href={`#${sec}`}
-                onClick={handleNavClick}
+              <button
+                onClick={() => handleNavClick(sec)}
                 className={`block hover:text-blue-500 transition ${
                   activeSection === sec ? "text-blue-600 font-semibold" : ""
                 }`}
               >
                 {sec.charAt(0).toUpperCase() + sec.slice(1)}
-              </a>
+              </button>
             </li>
           ))}
         </ul>

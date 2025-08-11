@@ -1,6 +1,13 @@
 import { Typewriter } from 'react-simple-typewriter';
 
 const Home = () => {
+  const scrollToProjects = () => {
+    const element = document.getElementById("projects");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="home"
@@ -30,12 +37,12 @@ const Home = () => {
           />
         </p>
 
-        <a
-          href="#projects"
+        <button
+          onClick={scrollToProjects}
           className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md text-base sm:text-lg font-medium transition duration-300 shadow-lg"
         >
           View My Work
-        </a>
+        </button>
       </div>
     </section>
   );
