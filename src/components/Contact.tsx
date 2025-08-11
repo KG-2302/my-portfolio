@@ -15,7 +15,9 @@ const Contact = () => {
       {/* Contact Info */}
       <div className="flex flex-col items-center gap-2 text-gray-800 text-sm sm:text-base mb-8">
         <a
-          href="mailto:kouichiguisihan@gmail.com"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=kouichiguisihan@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-blue-600 hover:underline transition"
         >
           kouichiguisihan@gmail.com
